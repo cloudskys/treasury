@@ -13,14 +13,12 @@ import com.clearspring.analytics.stream.quantile.TDigest;
 
 public class Hyperloglog {
 	public static void main(String[] args) {
-		//##############不同的数字
 		ICardinality card = new HyperLogLog(10);
 		for (int i : new int[] { 1, 2, 3, 2, 4, 3,4,98,4,99,1,2,4,2,3,2,3,2,3,2,3,2,3,3,44,2,3,32,3,3,4,4,3,55,2,45,1,2222 }) {
 		    card.offer(i);
 		}
 		System.out.println(card.cardinality()); // 4
 		
-		//是否包含
 		Filter filter = new BloomFilter(100, 0.01);
 		for (int i = 0; i <1000000000; i++) {
 			filter.add("google.com"+i);
@@ -43,11 +41,5 @@ public class Hyperloglog {
 		    System.out.println(String.format("quantile=%.1f digest=%.4f exact=%.4f",
 		            q, digest.quantile(q), data.get((int) (data.size() * q))));
 		}
-		// quantile=0.1 digest=0.0998 exact=0.1003
-		// quantile=0.5 digest=0.5009 exact=0.5000
-		// quantile=0.9 digest=0.8994 exact=0.8998
-	
-	
-
 	}
 }

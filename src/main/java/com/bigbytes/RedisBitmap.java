@@ -70,7 +70,6 @@ public class RedisBitmap {
 	public static void main(String[] args) {
 		RedisBitmap b = new RedisBitmap();
 		b.insertDaily();
-		System.out.println("-----²åÈë½YÊø-----");
 		int i = b.uniqueCount("daily_active", "20190701");
 		System.out.println(i);
 		int j = b.uniqueCount(dailykey, "20190701", "20190702", "20190703", "20190704", "20190705");
