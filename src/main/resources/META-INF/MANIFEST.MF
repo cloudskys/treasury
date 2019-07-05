@@ -1,0 +1,3 @@
+Premain-Class: com.agent.simple.MyAgent
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true

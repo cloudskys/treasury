@@ -3,9 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>treasury</groupId>
 	<artifactId>treasury</artifactId>
-	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bigbyt Maven Webapp</name>
+	<name>java Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
@@ -24,8 +23,36 @@
 			<artifactId>jedis</artifactId>
 			<version>3.1.0-m3</version>
 		</dependency>
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>3.24.1-GA</version>
+			</dependency>
+			 <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>1.8</version>
+            <scope>system</scope>
+            <systemPath>${java.home}/../lib/tools.jar</systemPath>
+        </dependency>
 	</dependencies>
 	<build>
-		<finalName>treasury</finalName>
-	</build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <archive>
+                       <manifestEntries>
+                          <Project-name>${project.name}</Project-name>
+                          <Project-version>${project.version}</Project-version>
+                          <Premain-Class>com.agent.MyAgent</Premain-Class>
+                          <Can-Redefine-Classes>false</Can-Redefine-Classes>
+                       </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

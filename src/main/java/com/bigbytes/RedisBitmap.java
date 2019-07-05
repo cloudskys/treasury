@@ -1,9 +1,6 @@
 package com.bigbytes;
 
 import java.util.BitSet;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
 
 import redis.clients.jedis.Jedis;
 
@@ -34,7 +31,7 @@ public class RedisBitmap {
 				String key = dailykey + ":2019070" + i;
 
 				jedis.del(key);
-				for (int j = 0; j < 50000; j++) {
+				for (int j = 0; j < 500; j++) {
 					// int cid = new Random().nextInt(100000);
 					// System.out.println("setbit = " + key + ":" + cid);
 					// System.out.println("setbit = " + key + ":" + j);
