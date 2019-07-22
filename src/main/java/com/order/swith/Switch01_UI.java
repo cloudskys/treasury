@@ -1,5 +1,12 @@
 package com.order.swith;
 
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.order.swith.po.User;
+import com.order.swith.service.RedisService;
+
 /**
  * 问题 一件商品只有100个库存，现在有1000或者更多的用户来购买，每个用户计划同时购买1个到几个不等商品。如何保证库存在高并发的场景下是安全的？
  * 如何保证不多发 不少发
@@ -11,6 +18,8 @@ package com.order.swith;
  */
 
 public class Switch01_UI {
+	@Autowired
+	private RedisService redisService;
 	/**
 	 * 先生成 token 保存到 Redis token 作为 key , 并设置过期时间 时间长度 根据任务需求 value 为数字 自增判断
 	 * 是否使用过 *
