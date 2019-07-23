@@ -1,5 +1,6 @@
 package com.executor;
 
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -16,8 +17,10 @@ public class UseThreadPoolExecutor1 {
 				3, // MaxSize
 				60, // 60
 				TimeUnit.SECONDS,
-				// new ArrayBlockingQueue<Runnable>(2) //指定一种队列 （有界队列）
-				new LinkedBlockingQueue<Runnable>(), new AbortPolicy()
+				 new ArrayBlockingQueue<Runnable>(2) //指定一种队列 （有界队列）
+				//new LinkedBlockingQueue<Runnable>()
+				, 
+				new MyRejected()
 		// , new DiscardOldestPolicy()
 		);
 		MyTask mt1 = new MyTask(1, "任务1");
