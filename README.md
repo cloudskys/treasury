@@ -9,3 +9,7 @@
 ## 5.基于ThreadLocal的实例应用
 ## 6:基于Reactor的反应式编程实例
      Flux和 Mono实现
+## 6:锁的分类
+   可重入锁 synchronized    ReentrantLock
+  读写锁       ReentrantReadWriteLock
+    
