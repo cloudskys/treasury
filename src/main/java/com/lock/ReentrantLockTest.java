@@ -2,7 +2,7 @@ package com.lock;
 
 import java.util.concurrent.locks.ReentrantLock;
 
-public class LockTest4 extends Thread {
+public class ReentrantLockTest extends Thread {
     ReentrantLock lock = new ReentrantLock();
     public void get() {
         lock.lock();
@@ -20,7 +20,7 @@ public class LockTest4 extends Thread {
         get();
     }
     public static void main(String[] args) {
-        LockTest4 ss = new LockTest4();
+    	ReentrantLockTest ss = new ReentrantLockTest();
         new Thread(ss).start();
         new Thread(ss).start();
         new Thread(ss).start();
