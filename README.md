@@ -20,4 +20,34 @@
    对称加密算法:DES DES3  AES
        非对称加密:RSA  
            摘要算法:MD5 SHA
+		   
+		   
+https://www.jianshu.com/p/3f2f3ee87eaf
+
+
+local buyNum = ARGV[1]
+local goodsKey = KEYS[1]  
+local goodsNum = redis.call('get',goodsKey) 
+if goodsNum >= buyNum 
+then redis.call('decrby',goodsKey,buyNum) 
+return buyNum 
+else 
+return '0'
+end
+
+
+
+@Service
+public class GoodsServiceImpl implements GoodsService {
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
+    @Resource
+    private LuaScript luaScript;
+    @Override
+    public Long flashSellByLuaScript(String skuCode,int num) {
+        DefaultRedisScript<String> longDefaultRedisScript = new DefaultRedisScript<>(luaScript.flashSaleScript, String.class);
+        String result = stringRedisTemplate.execute(longDefaultRedisScript, Collections.singletonList(skuCode),String.valueOf(num));
+        return Long.valueOf(result);
+    }
+    //省略 其他的方法
  
